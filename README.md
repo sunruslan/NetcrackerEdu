@@ -1,2 +1,2 @@
 # NetcrackerEdu
-Netcracker education courses
+Netcracker Learning Center courses for Software Developer
