@@ -52,15 +52,24 @@ Directory for home work labs.
     <td></td>
   </tr>
   <tr>
+    <td rowspan="4">Utils</td>
+    <td>PortScanner</td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>/4</td>
   </tr>
   <tr>
+    <td>FileScanner</td>
     <td></td>
+    <td>/11</td>
+  </tr>
+  <tr>
+    <td>Archiever</td>
     <td></td>
+    <td>/11</td>
+  </tr>
+  <tr>
+    <td>ConsoleCalculator</td>
     <td></td>
-    <td></td>
+    <td>/9</td>
   </tr>
 </table>
