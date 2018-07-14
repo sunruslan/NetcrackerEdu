@@ -58,12 +58,12 @@ Directory for home work labs.
     <td>/4</td>
   </tr>
   <tr>
-    <td>FileScanner</td>
+    <td>FileSearcher</td>
     <td></td>
     <td>/11</td>
   </tr>
   <tr>
-    <td>Archiever</td>
+    <td>Archiver</td>
     <td></td>
     <td>/11</td>
   </tr>
