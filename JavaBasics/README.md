@@ -32,7 +32,7 @@ Directory for home work labs.
   </tr>
   <tr>
     <td>ComplexNumber</td>
-    <td>\00B1</td>
+    <td>&plusmn;</td>
     <td></td>
   </tr>
   <tr>
