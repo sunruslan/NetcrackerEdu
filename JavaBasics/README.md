@@ -11,39 +11,39 @@ Directory for home work labs.
   <tr>
     <td rowspan="3">Trivial</td>
     <td>ControlFlowStatements1</td>
-    <td>\2714</td>
+    <td>&#10004;</td>
     <td>4/4</td>
   </tr>
   <tr>
     <td>ControlFlowStatements2</td>
-    <td></td>
-    <td></td>
+    <td>&#10004;</td>
+    <td>4/4</td>
   </tr>
   <tr>
     <td>ControlFlowStatements3</td>
-    <td></td>
-    <td></td>
+    <td>&#10004;</td>
+    <td>-</td>
   </tr>
   <tr>
     <td rowspan="4">OOP</td>
     <td>ArrayVector</td>
-    <td></td>
-    <td></td>
+    <td>&#10004;</td>
+    <td>7/7</td>
   </tr>
   <tr>
     <td>ComplexNumber</td>
     <td>&plusmn;</td>
-    <td></td>
+    <td>7/10</td>
   </tr>
   <tr>
     <td>Employee</td>
-    <td></td>
-    <td></td>
+    <td>&#10004;</td>
+    <td>3/3</td>
   </tr>
   <tr>
     <td>Location</td>
-    <td></td>
-    <td></td>
+    <td>&#10004;</td>
+    <td>5/5</td>
   </tr>
   <tr>
     <td>Collections</td>
