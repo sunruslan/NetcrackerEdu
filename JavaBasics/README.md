@@ -1,8 +1,66 @@
 # JavaBasics.
 Directory for home work labs.
 
-|Assignment|Projects|
-|-----|--------|
-|Trivial|<ul><li>ControlFlowStatements1</a></li><li>ControlFlowStatements2</li><li>ControlFlowStatements3</li></ul>|
-|OOP|<ul><li>ArrayVector</li><li>ComplexNumber</li><li>Employee</li><li>Location</li></ul>|
-|Collections||
+<table>
+  <tr>
+    <th>Assignment</th>
+    <th>Project</th>
+    <th>Done</th>
+    <th>Score</th>
+  </tr>
+  <tr>
+    <td rowspan="3">Trivial</td>
+    <td>ControlFlowStatements1</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>ControlFlowStatements2</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>ControlFlowStatements3</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td rowspan="4">OOP</td>
+    <td>ArrayVector</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>ComplexNumber</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Employee</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Collections</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
