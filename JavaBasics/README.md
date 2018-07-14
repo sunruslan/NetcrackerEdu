@@ -11,8 +11,8 @@ Directory for home work labs.
   <tr>
     <td rowspan="3">Trivial</td>
     <td>ControlFlowStatements1</td>
-    <td></td>
-    <td></td>
+    <td>\2714</td>
+    <td>4/4</td>
   </tr>
   <tr>
     <td>ControlFlowStatements2</td>
@@ -32,7 +32,7 @@ Directory for home work labs.
   </tr>
   <tr>
     <td>ComplexNumber</td>
-    <td></td>
+    <td>\00B1</td>
     <td></td>
   </tr>
   <tr>
