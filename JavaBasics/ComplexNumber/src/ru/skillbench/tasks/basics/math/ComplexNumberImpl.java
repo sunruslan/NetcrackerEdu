@@ -1,12 +1,17 @@
 package ru.skillbench.tasks.basics.math;
 
+import java.util.Arrays;
+
+
 public class ComplexNumberImpl implements ComplexNumber {
+    private double re = 0;
+    private double im = 0;
     /**
      * @return real part of this complex number
      */
     @Override
     public double getRe() {
-        return 0;
+        return re;
     }
 
     /**
@@ -14,7 +19,7 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public double getIm() {
-        return 0;
+        return im;
     }
 
     /**
@@ -22,7 +27,7 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public boolean isReal() {
-        return false;
+        return im == 0;
     }
 
     /**
@@ -33,7 +38,8 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public void set(double re, double im) {
-
+        this.re = re;
+        this.im = im;
     }
 
     /**
@@ -51,7 +57,32 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public void set(String value) throws NumberFormatException {
-
+        if (value.indexOf('i') >= 0) {
+            re = 0;
+            if (value.indexOf('i') == 0) {
+                im = 1;
+            } else {
+                int reEnd = Math.max(value.lastIndexOf('+'), value.lastIndexOf('-'));
+                int reStart = Character.isDigit(value.charAt(0)) ? 0 : 1;
+                if (reEnd - reStart > 0) {
+                    re = Double.parseDouble(value.substring(reStart, reEnd));
+                    int reSign = value.charAt(0) == '-' ? -1 : 1;
+                    re *= reSign;
+                }
+                int imStart = reEnd + 1;
+                int imEnd = value.indexOf('i');
+                int imSign = value.charAt(reEnd) == '-' ? -1 : 1;
+                im = Double.parseDouble(value.substring(imStart, imEnd));
+                im *= imSign;
+            }
+        } else {
+            int reStart = Character.isDigit(value.charAt(0)) ? 0 : 1;
+            int reEnd = value.length();
+            int reSign = value.charAt(0) == '-' ? -1 : 1;
+            re = Double.parseDouble(value.substring(reStart, reEnd));
+            re *= reSign;
+            im = 0;
+        }
     }
 
     /**
@@ -62,7 +93,9 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public ComplexNumber copy() {
-        return null;
+        ComplexNumber copy = new ComplexNumberImpl();
+        copy.set(re, im);
+        return copy;
     }
 
     /**
@@ -77,7 +110,45 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public ComplexNumber clone() throws CloneNotSupportedException {
-        return null;
+        ComplexNumber copy = new ComplexNumberImpl();
+        copy.set(re, im);
+        return copy;
+    }
+
+    /**
+     * Returns a string representation of this number, which must be compatible with {@link #set(String)}:
+     * for any ComplexNumber x, the code <code>x.set(x.toString());</code> must not change x.<br/>
+     * For example: 12.5-1.0i or 0.0 or 0.3333333333333333i<br/>
+     * If the imaginary part of the number is 0, only "re" must be returned (where re is the real part).<br/>
+     * If the real part of the number is 0 and the imaginary part is not 0,
+     *  "imi" must be returned (where im is the imaginary part).<br/>
+     * Both re and im must be converted to string "as is" - without truncation of last digits,
+     * i.e. the number of characters in their string representation is not limited
+     *   (it is determined by {@link Double#toString(double)}).
+     * @see Object#toString()
+     */
+    public String toString() {
+        if (im == 0) {
+            return String.valueOf(re);
+        } else {
+            if (re == 0) {
+                return String.valueOf(im) + "i";
+            } else {
+                if (im > 0) {
+                    return String.valueOf(re)+"+"+String.valueOf(im)+"i";
+                } else {
+                    return String.valueOf(re)+String.valueOf(im)+"i";
+                }
+            }
+        }
+    }
+    /**
+     * Checks whether some other object is "equal to" this number.
+     * @param other Any implementation of {@link ComplexNumber} interface (may not )
+     * @see Object#equals(Object)
+     */
+    public boolean equals(Object other) {
+        return (this == other);
     }
 
     /**
@@ -93,7 +164,13 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public int compareTo(ComplexNumber other) {
-        return 0;
+        double diff = Math.sqrt(re*re + im*im) - Math.sqrt(other.getRe()*other.getRe() + other.getIm()*other.getIm());
+        if (diff < 0) {
+            return -1;
+        } else if (diff == 0) {
+            return 0;
+        }
+        return 1;
     }
 
     /**
@@ -108,7 +185,7 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public void sort(ComplexNumber[] array) {
-
+        Arrays.sort(array);
     }
 
     /**
@@ -118,7 +195,9 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public ComplexNumber negate() {
-        return null;
+        re *= -1;
+        im *= -1;
+        return this;
     }
 
     /**
@@ -129,7 +208,9 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public ComplexNumber add(ComplexNumber arg2) {
-        return null;
+        re += arg2.getRe();
+        im += arg2.getIm();
+        return this;
     }
 
     /**
@@ -142,6 +223,9 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public ComplexNumber multiply(ComplexNumber arg2) {
-        return null;
+        double newRe = re*arg2.getRe() - im*arg2.getIm();
+        double newIm = im*arg2.getRe() + re * arg2.getIm();
+        this.set(newRe, newIm);
+        return this;
     }
 }
