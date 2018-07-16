@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class ConsoleCalculator {
+    private static int bracket = 0;
     private static Scanner scanner;
     private static Double result = new Double(0);
     private static Stack<String> operations = new Stack<>();
@@ -25,7 +26,7 @@ public class ConsoleCalculator {
         try {
             nums.push(Double.parseDouble(cmd));
         } catch (NumberFormatException e){
-            System.out.println(e.toString());
+            System.err.println(e.toString());
         }
         return true;
     }
@@ -33,8 +34,21 @@ public class ConsoleCalculator {
         if (cmd.equals("quit")) {
             return false;
         }
+        if (cmd.equals("(")) {
+            ++bracket;
+        } else if (cmd.equals(")")) {
+            --bracket;
+            if (bracket < 0) {
+                System.err.println("Incorrect expression");
+                return false;
+            }
+            holder(operations.pop());
+        } else {
+            operations.push(cmd);
+        }
         return true;
     }
+    private static void holder (String op) {}
     public static void main (String[] args) {
         scanner = new Scanner(System.in);
         if (!start()) {
