@@ -46,10 +46,20 @@ Directory for home work labs.
     <td>5/5</td>
   </tr>
   <tr>
-    <td>Collections</td>
+    <td rowspan="4">Collections</td>
+    <td>StringFilter</td>
     <td></td>
+    <td>/13</td>
+  </tr>
+  <tr>
+    <td>TreeNode</td>
     <td></td>
+    <td>/10</td>
+  </tr>
+  <tr>
+    <td>WordCounter</td>
     <td></td>
+    <td>/8</td>
   </tr>
   <tr>
     <td rowspan="4">Utils</td>
