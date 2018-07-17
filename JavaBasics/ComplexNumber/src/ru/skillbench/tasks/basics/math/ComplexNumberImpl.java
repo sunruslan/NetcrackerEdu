@@ -57,32 +57,41 @@ public class ComplexNumberImpl implements ComplexNumber {
      */
     @Override
     public void set(String value) throws NumberFormatException {
-        if (value.indexOf('i') >= 0) {
-            re = 0;
-            if (value.indexOf('i') == 0) {
-                im = 1;
-            } else {
-                int reEnd = Math.max(value.lastIndexOf('+'), value.lastIndexOf('-'));
-                int reStart = Character.isDigit(value.charAt(0)) ? 0 : 1;
-                if (reEnd - reStart > 0) {
-                    re = Double.parseDouble(value.substring(reStart, reEnd));
-                    int reSign = value.charAt(0) == '-' ? -1 : 1;
-                    re *= reSign;
-                }
-                int imStart = reEnd + 1;
-                int imEnd = value.indexOf('i');
-                int imSign = value.charAt(reEnd) == '-' ? -1 : 1;
-                im = Double.parseDouble(value.substring(imStart, imEnd));
-                im *= imSign;
-            }
-        } else {
-            int reStart = Character.isDigit(value.charAt(0)) ? 0 : 1;
-            int reEnd = value.length();
-            int reSign = value.charAt(0) == '-' ? -1 : 1;
-            re = Double.parseDouble(value.substring(reStart, reEnd));
-            re *= reSign;
-            im = 0;
-        }
+		int imagpartend = value.indexOf("i");
+		if (imagpartend == -1) {
+			re = Double.parseDouble(value);
+			im = 0;
+			return;
+		}
+		if (imagpartend != value.length()-1) {
+			throw new NumberFormatException();
+		}
+		int j;
+		for (j=1; imagpartend-j >= 0 && (Character.isDigit( value.charAt(imagpartend-j)) || value.charAt(imagpartend-j) == '.') ; j++){}
+		int imagpartbegin = imagpartend-j+1;
+		if (imagpartbegin == 0) {
+			re = 0;
+			if (imagpartbegin == imagpartend){
+				im = Double.parseDouble(value.substring(0,imagpartend) + "1");
+			} else {
+				im = Double.parseDouble(value.substring(0,imagpartend));
+			}
+			return;
+		} else {
+			if (imagpartbegin == imagpartend){
+				im = Double.parseDouble(value.substring(imagpartbegin-1,imagpartend) + "1");
+			}
+			else {
+				im = Double.parseDouble(value.substring(imagpartbegin-1,imagpartend));
+			}
+			
+			if (imagpartbegin-1 != 0) {
+				re = Double.parseDouble(value.substring(0,imagpartbegin-1));
+			} else {
+				re = 0;
+			}
+			return;
+		}
     }
 
     /**
@@ -148,7 +157,14 @@ public class ComplexNumberImpl implements ComplexNumber {
      * @see Object#equals(Object)
      */
     public boolean equals(Object other) {
-        return (this == other);
+        if (other == null) {
+			return false;
+		} else if (!(other instanceof ComplexNumber)){
+			return false;
+		} else {
+			ComplexNumber oth = (ComplexNumber) other;
+			return (re == oth.getRe() && im == oth.getIm());
+		}
     }
 
     /**
