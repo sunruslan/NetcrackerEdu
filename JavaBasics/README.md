@@ -10,17 +10,17 @@ Directory for home work labs.
   </tr>
   <tr>
     <td rowspan="3">Trivial</td>
-    <td>ControlFlowStatements1</td>
+    <td><a href="https://github.com/sunruslan/NetcrackerEdu/tree/master/JavaBasics/ControlFlowStatements1/src/ru/skillbench/tasks/basics/control">ControlFlowStatements1</td>
     <td>&#10004;</td>
     <td>4/4</td>
   </tr>
   <tr>
-    <td>ControlFlowStatements2</td>
+    <td><a href="https://github.com/sunruslan/NetcrackerEdu/tree/master/JavaBasics/ControlFlowStatements2/src/ru/skillbench/tasks/basics/control">ControlFlowStatements2</a></td>
     <td>&#10004;</td>
     <td>4/4</td>
   </tr>
   <tr>
-    <td>ControlFlowStatements3</td>
+    <td><a href="https://github.com/sunruslan/NetcrackerEdu/tree/master/JavaBasics/ControlFlowStatements3/src/ru/skillbench/tasks/basics/control">ControlFlowStatements3</td>
     <td>&#10004;</td>
     <td>-</td>
   </tr>
