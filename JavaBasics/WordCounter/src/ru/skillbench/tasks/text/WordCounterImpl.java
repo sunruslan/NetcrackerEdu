@@ -1,11 +1,11 @@
 package ru.skillbench.tasks.text;
 
 import java.io.PrintStream;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class WordCounterImpl implements WordCounter {
+    private String text = null;
     /**
      * Принимает текст для анализа
      *
@@ -13,7 +13,7 @@ public class WordCounterImpl implements WordCounter {
      */
     @Override
     public void setText(String text) {
-
+        this.text = text;
     }
 
     /**
@@ -24,7 +24,7 @@ public class WordCounterImpl implements WordCounter {
      */
     @Override
     public String getText() {
-        return null;
+        return text;
     }
 
     /**
@@ -40,8 +40,21 @@ public class WordCounterImpl implements WordCounter {
      *                               или последний раз вызывался с параметром <code>null</code>)
      */
     @Override
-    public Map<String, Long> getWordCounts() {
-        return null;
+    public Map<String, Long> getWordCounts() throws IllegalStateException {
+        if (text == null) {
+            throw new IllegalStateException();
+        }
+        Map <String, Long> res = new HashMap<>();
+        String[] words = text.trim().toLowerCase().split("\\s+");
+        for (String word: words) {
+            Long value = res.get(word);
+            if (value == null) {
+                res.put(word, new Long(0));
+            } else {
+                res.put(word, ++value);
+            }
+        }
+        return res;
     }
 
     /**
@@ -60,7 +73,27 @@ public class WordCounterImpl implements WordCounter {
      */
     @Override
     public List<Map.Entry<String, Long>> getWordCountsSorted() {
-        return null;
+        if (text == null) {
+            throw new IllegalStateException();
+        }
+        Map <String, Long> res = new HashMap<>();
+        String[] words = text.trim().toLowerCase().split("\\s+");
+        for (String word: words) {
+            Long value = res.get(word);
+            if (value == null) {
+                res.put(word, new Long(0));
+            } else {
+                res.put(word, ++value);
+            }
+        }
+        List<Map.Entry<String, Long>> list = new LinkedList<>(res.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Long>>() {
+            @Override
+            public int compare(Map.Entry<String, Long> o1, Map.Entry<String, Long> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        return list;
     }
 
     /**
@@ -75,7 +108,9 @@ public class WordCounterImpl implements WordCounter {
      */
     @Override
     public <K extends Comparable<K>, V extends Comparable<V>> List<Map.Entry<K, V>> sort(Map<K, V> map, Comparator<Map.Entry<K, V>> comparator) {
-        return null;
+        List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
+        Collections.sort(list, comparator);
+        return list;
     }
 
     /**
@@ -96,6 +131,8 @@ public class WordCounterImpl implements WordCounter {
      */
     @Override
     public <K, V> void print(List<Map.Entry<K, V>> entries, PrintStream ps) {
-
+        for (Map.Entry<K, V> e: entries) {
+            ps.println(e.getKey().toString().toLowerCase() + " " + e.getValue());
+        }
     }
 }
