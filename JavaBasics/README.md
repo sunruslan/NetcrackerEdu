@@ -26,7 +26,7 @@ Directory for home work labs.
   </tr>
   <tr>
     <td rowspan="4">OOP</td>
-    <td <a href="https://github.com/sunruslan/NetcrackerEdu/tree/master/JavaBasics/ArrayVector/src/ru/skillbench/tasks/basics/math">>ArrayVector</a></td>
+    <td> <a href="https://github.com/sunruslan/NetcrackerEdu/tree/master/JavaBasics/ArrayVector/src/ru/skillbench/tasks/basics/math">ArrayVector</a></td>
     <td>&#10004;</td>
     <td>7/7</td>
   </tr>
@@ -47,7 +47,7 @@ Directory for home work labs.
   </tr>
   <tr>
     <td rowspan="3">Collections</a></td>
-    <td><a href="https://github.com/sunruslan/NetcrackerEdu/tree/master/JavaBasics/StringFilter/src/ru/skillbench/tasks/javaapi/collections">StringFilter</td>
+    <td><a href="https://github.com/sunruslan/NetcrackerEdu/tree/master/JavaBasics/StringFilter/src/ru/skillbench/tasks/javaapi/collections">StringFilter</a></td>
     <td>&#10004;</td>
     <td>13/13</td>
   </tr>
