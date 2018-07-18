@@ -53,8 +53,8 @@ Directory for home work labs.
   </tr>
   <tr>
     <td>TreeNode</td>
-    <td>&plusmn;</td>
-    <td>8/10</td>
+    <td>&#10004;</td>
+    <td>10/10</td>
   </tr>
   <tr>
     <td>WordCounter</td>
