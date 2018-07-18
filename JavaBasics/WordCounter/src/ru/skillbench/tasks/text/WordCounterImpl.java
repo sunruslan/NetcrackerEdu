@@ -3,6 +3,8 @@ package ru.skillbench.tasks.text;
 import java.io.PrintStream;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class WordCounterImpl implements WordCounter {
     private String text = null;
@@ -46,12 +48,17 @@ public class WordCounterImpl implements WordCounter {
         }
         Map <String, Long> res = new HashMap<>();
         String[] words = text.trim().toLowerCase().split("\\s+");
+        Pattern pattern = Pattern.compile("<.*?>");
+        Matcher matcher;
         for (String word: words) {
-            Long value = res.get(word);
-            if (value == null) {
-                res.put(word, new Long(0));
-            } else {
-                res.put(word, ++value);
+            matcher = pattern.matcher(word);
+            if (!word.equals("") && !matcher.matches()) {
+                Long value = res.get(word);
+                if (value == null) {
+                    res.put(word, new Long(1));
+                } else {
+                    res.put(word, ++value);
+                }
             }
         }
         return res;
@@ -72,25 +79,12 @@ public class WordCounterImpl implements WordCounter {
      *                               или последний раз вызывался с параметром <code>null</code>)
      */
     @Override
-    public List<Map.Entry<String, Long>> getWordCountsSorted() {
-        if (text == null) {
-            throw new IllegalStateException();
-        }
-        Map <String, Long> res = new HashMap<>();
-        String[] words = text.trim().toLowerCase().split("\\s+");
-        for (String word: words) {
-            Long value = res.get(word);
-            if (value == null) {
-                res.put(word, new Long(0));
-            } else {
-                res.put(word, ++value);
-            }
-        }
-        List<Map.Entry<String, Long>> list = new LinkedList<>(res.entrySet());
+    public List<Map.Entry<String, Long>> getWordCountsSorted() throws IllegalStateException {
+        List<Map.Entry<String, Long>> list = new LinkedList<>(getWordCounts().entrySet());
         Collections.sort(list, new Comparator<Map.Entry<String, Long>>() {
             @Override
             public int compare(Map.Entry<String, Long> o1, Map.Entry<String, Long> o2) {
-                return o1.getValue().compareTo(o2.getValue());
+                return -1 * o1.getValue().compareTo(o2.getValue());
             }
         });
         return list;
