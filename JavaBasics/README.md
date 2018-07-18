@@ -58,8 +58,8 @@ Directory for home work labs.
   </tr>
   <tr>
     <td>WordCounter</td>
-    <td></td>
-    <td>/8</td>
+    <td>&plusmn;</td>
+    <td>3/8</td>
   </tr>
   <tr>
     <td rowspan="4">Utils</td>
