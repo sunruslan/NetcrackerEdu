@@ -48,8 +48,8 @@ Directory for home work labs.
   <tr>
     <td rowspan="3">Collections</td>
     <td>StringFilter</td>
-    <td></td>
-    <td>/13</td>
+    <td>&#10004;</td>
+    <td>13/13</td>
   </tr>
   <tr>
     <td>TreeNode</td>
@@ -64,7 +64,7 @@ Directory for home work labs.
   <tr>
     <td rowspan="4">Utils</td>
     <td>PortScanner</td>
-    <td></td>
+    <td>&#10004;</td>
     <td>/4</td>
   </tr>
   <tr>
@@ -79,7 +79,7 @@ Directory for home work labs.
   </tr>
   <tr>
     <td>ConsoleCalculator</td>
-    <td></td>
+    <td>&#10004;</td>
     <td>/9</td>
   </tr>
 </table>
