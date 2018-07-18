@@ -36,7 +36,7 @@ Directory for home work labs.
     <td>10/10</td>
   </tr>
   <tr>
-    <td<a href="https://github.com/sunruslan/NetcrackerEdu/tree/master/JavaBasics/Employee/src/ru/skillbench/tasks/basics/entity">>Employee</a></td>
+    <td><a href="https://github.com/sunruslan/NetcrackerEdu/tree/master/JavaBasics/Employee/src/ru/skillbench/tasks/basics/entity">Employee</a></td>
     <td>&#10004;</td>
     <td>3/3</td>
   </tr>
