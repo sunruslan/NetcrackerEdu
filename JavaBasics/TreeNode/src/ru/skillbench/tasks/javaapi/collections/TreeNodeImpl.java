@@ -80,6 +80,7 @@ public class TreeNodeImpl implements TreeNode {
      */
     @Override
     public void addChild(TreeNode child) {
+        child.setParent(this);
         if (children == null) {
             children = new HashSet<>();
         }
@@ -196,15 +197,14 @@ public class TreeNodeImpl implements TreeNode {
     @Override
     public TreeNode findChild(Object data) {
         TreeNode res = null;
-        if (children != null) {
-            for (TreeNode c : children) {
-                if (c != null && c.getData().equals(data)) {
-                    res = c;
-                    break;
-                } else {
-                    res = c.findChild(data);
-                    if (res != null) {
+        if (children != null && children.size() > 0) {
+            for (TreeNode c: children) {
+                if (c != null) {
+                    if (c.getData() != null && c.getData().equals(data) || c.getData() == null && data == null) {
+                        res = c;
                         break;
+                    } else {
+                        res = c.findChild(data);
                     }
                 }
             }
