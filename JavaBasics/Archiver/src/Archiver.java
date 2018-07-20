@@ -51,10 +51,8 @@ public class Archiver {
         try {
             ZipInputStream zin = new ZipInputStream(new FileInputStream(args[1]));
             ZipOutputStream zout = new ZipOutputStream(new FileOutputStream("temporary.zip"));
-            ZipEntry entry;
-            while ((entry = zin.getNextEntry()) != null) {
-
-            }
+            byte[] buffer = new byte[zin.available()];
+            zin.read(buffer);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -62,19 +60,34 @@ public class Archiver {
     }
     private static void comment (String[] args){
         if (args[2].equals("-r")) {
-            try {
-                ZipFile zip = new ZipFile(new File(args[2]), ZipFile.OPEN_READ);
-                System.out.println(zip.getComment());
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+            System.out.println(getComment(args));
         } else if (args[2].equals("-a")) {
-            try {
-                ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(args[2]));
-                zout.setComment(args[3]);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+            addComment(args);
+        } else if (args[2].equals("-c")) {
+            String[] arg = new String[args.length-1];
+            System.arraycopy(args, 0, arg, 0, arg.length);
+            compress(arg);
+            String[] a = {"comment", "-a", args[2], args[args.length-1]};
+            addComment(a);
+        }
+    }
+    private static String getComment (String[] args) {
+        try {
+            ZipFile zip = new ZipFile(new File(args[2]), ZipFile.OPEN_READ);
+            return zip.getComment();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.exit(1);
+        }
+        return null;
+    }
+    private static void addComment (String[] args) {
+        try {
+            ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(args[2]));
+            zout.setComment(args[3]);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.exit(1);
         }
     }
     public static void main(String[] args) {
